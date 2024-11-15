@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo Exemplo</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Se quiser usar um arquivo CSS externo -->
+  <style>
+    /* Estilos básicos */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .game-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      padding: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .tab:hover {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .active-tab-content {
+      display: block;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>Nome do Jogo</h1>
+
+    <!-- Abas para navegar entre conteúdo -->
+    <div class="tabs">
+      <div class="tab" id="tab-history">História</div>
+      <div class="tab" id="tab-characters">Personagens</div>
+    </div>
+
+    <!-- Conteúdo das abas -->
+    <div class="tab-content" id="content-history">
+      <h2>História do Jogo</h2>
+      <p>A história do jogo segue a jornada do herói, que busca salvar o mundo de uma ameaça misteriosa. Durante sua jornada, ele enfrenta inúmeros desafios, encontra aliados inesperados e descobre segredos antigos que alteram o destino do universo...</p>
+    </div>
+
+    <div class="tab-content" id="content-characters">
+      <h2>Personagens Principais</h2>
+      <p><strong>Herói:</strong> O protagonista que embarca em uma grande aventura para salvar o mundo. Ele é corajoso e determinado, mas tem uma fraqueza que será descoberta ao longo da jornada.</p>
+      <p><strong>Vilão:</strong> O antagonista que ameaça destruir tudo. Sua verdadeira identidade é um mistério até a metade do jogo.</p>
+      <p><strong>Apoiador:</strong> Um amigo leal do herói, que oferece conselhos e ajuda em momentos cruciais da aventura.</p>
+    </div>
+  </div>
+
+  <script>
+    // Selecionando as abas e conteúdos
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove a classe ativa de todas as abas e conteúdos
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active-tab-content'));
+
+        // Adiciona a classe ativa na aba e no conteúdo correspondentes
+        tab.classList.add('active');
+        const contentId = tab.id.replace('tab', 'content');
+        document.getElementById(contentId).classList.add('active-tab-content');
+      });
+    });
+
+    // Definir a primeira aba como ativa por padrão
+    document.getElementById('tab-history').classList.add('active');
+    document.getElementById('content-history').classList.add('active-tab-content');
+  </script>
+</body>
+</html>
